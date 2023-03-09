@@ -1,0 +1,4 @@
+Bundle-Name: codingchallenge-portlet
+Bundle-SymbolicName: de.ancud.app
+Bundle-Version: 1.0.0
+Export-Package: de.ancud.app.constants
