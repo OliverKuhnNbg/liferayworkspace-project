@@ -1,12 +1,16 @@
 package de.ancud.app.portlet;
 
-import de.ancud.app.constants.CodingChallengePortletKeys;
-
-import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
+import javax.portlet.ProcessAction;
 
 import org.osgi.service.component.annotations.Component;
+
+import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.util.ParamUtil;
+
+import de.ancud.app.constants.CodingChallengePortletKeys;
 
 /**
  * @author Oliver
@@ -27,4 +31,13 @@ import org.osgi.service.component.annotations.Component;
 	service = Portlet.class
 )
 public class CodingChallengePortlet extends MVCPortlet {
+	
+	//view form method
+	@ProcessAction(name=employeeSubmit)
+	public void employeeSubmit(ActionResponse response, ActionRequest request) {
+		System.out.println("\ntest call: employeeSubmit()");
+		String name = ParamUtil.getString(request, "name");
+		String mobile = ParamUtil.getString(request, "dueday");
+		System.out.println(name);
+	}
 }
