@@ -4,7 +4,8 @@
 	<b><liferay-ui:message key="codingchallenge.caption"/></b>
 </p>
 
-<portlet:actionURL name="employeeSubmit" var="employeeSubmit" />
+<portlet:actionURL name="formSubmit" var="formSubmit" />
+<portlet:actionURL name="doSomething" var="actionURL" />
 
 <div class="container-fluid">
 	<div class="row">
@@ -13,19 +14,22 @@
 		</div>
 	</div>
 	<div class="mt-4">
-			<form action="<%=employeeSubmit%>" method="post">
-			
+			<form action="${formSubmit}" method="post">
 				<div class="form-group">
-				    <label for="exampleInputEmail1">Name</label>
-				    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" name="<porlet:namesapces>name">
+				    <label for="exampleInputName">Name</label>
+				    <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" placeholder="Enter Name" name="name">
 				</div>
 				
 				<div class="form-group">
-				    <label for="exampleInputEmail1">Email address</label>
-				    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="<porlet:namesapces>dueday">
+				    <label for="exampleInputEmail">Email address</label>
+				    <input type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter E-Mail" name="dueday">
 				</div>
 				
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<aui:button type="submit">Submit</aui:button>
 			</form>
+	</div>
+	
+	<div class="mt-5 row">
+		<a href="<%= actionURL %>">Do Something</a>
 	</div>
 </div>

@@ -33,11 +33,17 @@ import de.ancud.app.constants.CodingChallengePortletKeys;
 public class CodingChallengePortlet extends MVCPortlet {
 	
 	//view form method
-	@ProcessAction(name=employeeSubmit)
-	public void employeeSubmit(ActionResponse response, ActionRequest request) {
+	@ProcessAction(name="formSubmit")
+	public void formSubmit(ActionResponse response, ActionRequest request) {
 		System.out.println("\ntest call: employeeSubmit()");
-		String name = ParamUtil.getString(request, "name");
-		String mobile = ParamUtil.getString(request, "dueday");
-		System.out.println(name);
+//		String name = ParamUtil.getString(request, "name");
+//		String mobile = ParamUtil.getString(request, "dueday");
+//		System.out.println(name);
+	}
+	
+	public void doSomething(
+		ActionRequest actionRequest, ActionResponse actionResponse) {
+
+		System.out.println("gold");
 	}
 }
