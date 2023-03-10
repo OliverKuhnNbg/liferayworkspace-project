@@ -14,7 +14,7 @@
 		</div>
 	</div>
 	<div class="mt-4">
-			<form action="${formSubmit}" method="post">
+			<form action="<%= formSubmit %>" method="post">
 				<div class="form-group">
 				    <label for="exampleInputName">Name</label>
 				    <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" placeholder="Enter Name" name="name">
@@ -25,7 +25,7 @@
 				    <input type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter E-Mail" name="dueday">
 				</div>
 				
-				<aui:button type="submit">Submit</aui:button>
+				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
 	</div>
 	
