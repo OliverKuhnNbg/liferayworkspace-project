@@ -1,0 +1,69 @@
+2023-03-09 15:58:06.203 INFO  [main][PortalContextLoaderListener:123] JVM arguments: -Xmx2560m -XX:MaxMetaspaceSize=768m -XX:MetaspaceSize=768m -Dcatalina.base=C:/Users/Oliver/eclipse-workspace/liferayworkspace-project/liferay-ce-portal-7.4.3.52-ga52/tomcat-9.0.65 -Dcatalina.home=C:/Users/Oliver/eclipse-workspace/liferayworkspace-project/liferay-ce-portal-7.4.3.52-ga52/tomcat-9.0.65 -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=8099 -Dcom.sun.management.jmxremote.ssl=false -Dfile.encoding=UTF8 -Djava.endorsed.dirs=C:/Users/Oliver/eclipse-workspace/liferayworkspace-project/liferay-ce-portal-7.4.3.52-ga52/tomcat-9.0.65/endorsed -Djava.io.tmpdir=C:/Users/Oliver/eclipse-workspace/liferayworkspace-project/liferay-ce-portal-7.4.3.52-ga52/tomcat-9.0.65/temp -Djava.net.preferIPv4Stack=true -Djava.util.logging.config.file=C:/Users/Oliver/eclipse-workspace/liferayworkspace-project/liferay-ce-portal-7.4.3.52-ga52/tomcat-9.0.65/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dorg.apache.catalina.loader.WebappClassLoader.ENABLE_CLEAR_REFERENCES=false -Duser.timezone=GMT
+2023-03-09 15:58:18.831 WARN  [main][DialectDetector:82] Liferay is configured to use Hypersonic as its database. Do NOT use Hypersonic in production. Hypersonic is an embedded database useful for development and demonstration purposes. The database settings can be changed in portal-ext.properties.
+2023-03-09 15:58:18.831 INFO  [main][DialectDetector:153] Using dialect com.liferay.portal.dao.orm.hibernate.HSQLDialect for HSQL Database Engine 2.3
+2023-03-09 15:58:22.841 INFO  [main][ModuleFrameworkImpl:1285] Starting initial bundles
+2023-03-09 15:58:26.603 INFO  [ModuleFramework-Static-Bundles-4][InterpolationConfigurationPlugin:109] Configured directory for secrets: C:/Users/Oliver/eclipse-workspace/liferayworkspace-project/liferay-ce-portal-7.4.3.52-ga52/osgi/configs
+2023-03-09 15:58:31.221 INFO  [main][ModuleFrameworkImpl:1584] Started initial bundles
+2023-03-09 15:58:31.222 INFO  [main][ModuleFrameworkImpl:1633] Starting dynamic bundles
+2023-03-09 15:58:53.040 INFO  [main][ModuleFrameworkImpl:1656] Started dynamic bundles
+2023-03-09 15:58:53.041 INFO  [main][ModuleFrameworkImpl:1663] Starting web bundles
+2023-03-09 15:58:56.157 INFO  [main][ModuleFrameworkImpl:1717] Started web bundles
+2023-03-09 15:58:56.161 INFO  [main][ModuleFrameworkImpl:279] Navigate to Control Panel > System > Gogo Shell and enter "lb" to see all bundles
+2023-03-09 15:58:56.184 INFO  [main][LoggingTimer:83] Starting com.liferay.portal.verify.VerifyProperties#verifySystemProperties
+2023-03-09 15:58:56.185 INFO  [main][LoggingTimer:44] Completed com.liferay.portal.verify.VerifyProperties#verifySystemProperties in 1 ms
+2023-03-09 15:58:56.185 INFO  [main][LoggingTimer:83] Starting com.liferay.portal.verify.VerifyProperties#verifyPortalProperties
+2023-03-09 15:58:56.205 INFO  [main][LoggingTimer:44] Completed com.liferay.portal.verify.VerifyProperties#verifyPortalProperties in 20 ms
+2023-03-09 15:58:56.206 INFO  [main][LoggingTimer:83] Starting com.liferay.portal.verify.VerifyProperties#verifyDocumentLibrary
+2023-03-09 15:58:56.206 INFO  [main][LoggingTimer:44] Completed com.liferay.portal.verify.VerifyProperties#verifyDocumentLibrary in 0 ms
+2023-03-09 15:58:56.689 INFO  [main][LoggingTimer:83] Starting com.liferay.portal.events.StartupHelperUtil#initResourceActions
+2023-03-09 15:58:56.758 INFO  [main][LoggingTimer:44] Completed com.liferay.portal.events.StartupHelperUtil#initResourceActions in 69 ms
+2023-03-09 15:59:00.013 WARN  [main][SidecarManager:103] Liferay automatically starts a child process of Elasticsearch named sidecar for convenient development and demonstration purposes. Do NOT use sidecar in production. Refer to the documentation for details on the limitations of sidecar and instructions on configuring a remote Elasticsearch connection in the Control Panel.
+2023-03-09 15:59:28.141 INFO  [main][Sidecar:119] Sidecar Elasticsearch liferay started at 127.0.0.1:9201
+2023-03-09 15:59:36.108 INFO  [main][StartupHelperUtil:83] There are no patches installed
+2023-03-09 15:59:36.129 INFO  [main][LoggingTimer:83] Starting com.liferay.portal.events.StartupHelperUtil#initResourceActions
+2023-03-09 15:59:36.183 INFO  [main][LoggingTimer:44] Completed com.liferay.portal.events.StartupHelperUtil#initResourceActions in 54 ms
+2023-03-09 15:59:36.873 INFO  [main][AutoDeployDir:176] Auto deploy scanner started for C:\Users\Oliver\eclipse-workspace\liferayworkspace-project\liferay-ce-portal-7.4.3.52-ga52\deploy
+2023-03-09 15:59:46.905 INFO  [com.liferay.portal.osgi.web.wab.extender.internal.WabFactory-BundleTrackerOpener][ThemeHotDeployListener:108] 1 theme for classic-theme is available for use
+2023-03-09 15:59:47.181 INFO  [com.liferay.portal.osgi.web.wab.extender.internal.WabFactory-BundleTrackerOpener][ThemeHotDeployListener:108] 1 theme for minium-theme is available for use
+2023-03-09 15:59:47.630 INFO  [com.liferay.portal.osgi.web.wab.extender.internal.WabFactory-BundleTrackerOpener][ThemeHotDeployListener:108] 1 theme for speedwell-theme is available for use
+2023-03-09 15:59:47.869 INFO  [com.liferay.portal.osgi.web.wab.extender.internal.WabFactory-BundleTrackerOpener][ThemeHotDeployListener:108] 1 theme for dialect-theme is available for use
+2023-03-09 15:59:48.134 INFO  [com.liferay.portal.osgi.web.wab.extender.internal.WabFactory-BundleTrackerOpener][ThemeHotDeployListener:108] 1 theme for admin-theme is available for use
+2023-03-09 16:03:09.277 INFO  [main][ThemeHotDeployListener:171] 1 theme for admin-theme was unregistered
+2023-03-09 16:03:09.302 INFO  [main][ThemeHotDeployListener:171] 1 theme for dialect-theme was unregistered
+2023-03-09 16:03:09.325 INFO  [main][ThemeHotDeployListener:171] 1 theme for speedwell-theme was unregistered
+2023-03-09 16:03:09.347 INFO  [main][ThemeHotDeployListener:171] 1 theme for minium-theme was unregistered
+2023-03-09 16:03:09.363 INFO  [main][ThemeHotDeployListener:171] 1 theme for classic-theme was unregistered
+2023-03-09 16:03:14.597 ERROR [main][SqlExceptionHelper:142] connection exception: closed
+2023-03-09 16:03:16.470 ERROR [main][SqlExceptionHelper:142] connection exception: closed
+2023-03-09 16:03:38.000 INFO  [main][PortalContextLoaderListener:123] JVM arguments: -XX:MaxMetaspaceSize=768m -XX:MetaspaceSize=768m -Dcatalina.base=C:/Users/Oliver/eclipse-workspace/liferayworkspace-project/liferay-ce-portal-7.4.3.52-ga52/tomcat-9.0.65 -Dcatalina.home=C:/Users/Oliver/eclipse-workspace/liferayworkspace-project/liferay-ce-portal-7.4.3.52-ga52/tomcat-9.0.65 -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=8099 -Dcom.sun.management.jmxremote.ssl=false -Dfile.encoding=UTF8 -Djava.endorsed.dirs=C:/Users/Oliver/eclipse-workspace/liferayworkspace-project/liferay-ce-portal-7.4.3.52-ga52/tomcat-9.0.65/endorsed -Djava.io.tmpdir=C:/Users/Oliver/eclipse-workspace/liferayworkspace-project/liferay-ce-portal-7.4.3.52-ga52/tomcat-9.0.65/temp -Djava.net.preferIPv4Stack=true -Djava.util.logging.config.file=C:/Users/Oliver/eclipse-workspace/liferayworkspace-project/liferay-ce-portal-7.4.3.52-ga52/tomcat-9.0.65/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dorg.apache.catalina.loader.WebappClassLoader.ENABLE_CLEAR_REFERENCES=false -Duser.timezone=GMT -Xmx2560m
+2023-03-09 16:03:43.675 INFO  [main][DialectDetector:153] Using dialect org.hibernate.dialect.PostgreSQL10Dialect for PostgreSQL 15.2
+2023-03-09 16:03:43.739 INFO  [main][DBInitUtil:143] Create tables and populate with default data
+2023-03-09 16:03:50.737 INFO  [main][ModuleFrameworkImpl:1285] Starting initial bundles
+2023-03-09 16:03:52.015 INFO  [ModuleFramework-Static-Bundles-1][InterpolationConfigurationPlugin:109] Configured directory for secrets: C:/Users/Oliver/eclipse-workspace/liferayworkspace-project/liferay-ce-portal-7.4.3.52-ga52/osgi/configs
+2023-03-09 16:03:55.093 INFO  [main][ModuleFrameworkImpl:1584] Started initial bundles
+2023-03-09 16:03:55.094 INFO  [main][ModuleFrameworkImpl:1633] Starting dynamic bundles
+2023-03-09 16:04:17.728 INFO  [main][ModuleFrameworkImpl:1656] Started dynamic bundles
+2023-03-09 16:04:17.730 INFO  [main][ModuleFrameworkImpl:1663] Starting web bundles
+2023-03-09 16:04:20.909 INFO  [main][ModuleFrameworkImpl:1717] Started web bundles
+2023-03-09 16:04:20.909 INFO  [main][ModuleFrameworkImpl:279] Navigate to Control Panel > System > Gogo Shell and enter "lb" to see all bundles
+2023-03-09 16:04:20.925 INFO  [main][LoggingTimer:83] Starting com.liferay.portal.verify.VerifyProperties#verifySystemProperties
+2023-03-09 16:04:20.926 INFO  [main][LoggingTimer:44] Completed com.liferay.portal.verify.VerifyProperties#verifySystemProperties in 0 ms
+2023-03-09 16:04:20.926 INFO  [main][LoggingTimer:83] Starting com.liferay.portal.verify.VerifyProperties#verifyPortalProperties
+2023-03-09 16:04:20.943 INFO  [main][LoggingTimer:44] Completed com.liferay.portal.verify.VerifyProperties#verifyPortalProperties in 17 ms
+2023-03-09 16:04:20.944 INFO  [main][LoggingTimer:83] Starting com.liferay.portal.verify.VerifyProperties#verifyDocumentLibrary
+2023-03-09 16:04:20.945 INFO  [main][LoggingTimer:44] Completed com.liferay.portal.verify.VerifyProperties#verifyDocumentLibrary in 1 ms
+2023-03-09 16:04:21.563 INFO  [main][LoggingTimer:83] Starting com.liferay.portal.events.StartupHelperUtil#initResourceActions
+2023-03-09 16:04:21.738 INFO  [main][LoggingTimer:44] Completed com.liferay.portal.events.StartupHelperUtil#initResourceActions in 176 ms
+2023-03-09 16:04:25.419 WARN  [main][SidecarManager:103] Liferay automatically starts a child process of Elasticsearch named sidecar for convenient development and demonstration purposes. Do NOT use sidecar in production. Refer to the documentation for details on the limitations of sidecar and instructions on configuring a remote Elasticsearch connection in the Control Panel.
+2023-03-09 16:04:52.477 INFO  [main][Sidecar:119] Sidecar Elasticsearch liferay started at 127.0.0.1:9201
+2023-03-09 16:05:01.977 INFO  [main][StartupHelperUtil:83] There are no patches installed
+2023-03-09 16:05:02.071 INFO  [main][LoggingTimer:83] Starting com.liferay.portal.events.StartupHelperUtil#initResourceActions
+2023-03-09 16:05:02.150 INFO  [main][LoggingTimer:44] Completed com.liferay.portal.events.StartupHelperUtil#initResourceActions in 80 ms
+2023-03-09 16:05:03.205 INFO  [main][AutoDeployDir:176] Auto deploy scanner started for C:\Users\Oliver\eclipse-workspace\liferayworkspace-project\liferay-ce-portal-7.4.3.52-ga52\deploy
+2023-03-09 16:06:09.911 INFO  [com.liferay.portal.osgi.web.wab.extender.internal.WabFactory-BundleTrackerOpener][ThemeHotDeployListener:108] 1 theme for classic-theme is available for use
+2023-03-09 16:06:10.176 INFO  [com.liferay.portal.osgi.web.wab.extender.internal.WabFactory-BundleTrackerOpener][ThemeHotDeployListener:108] 1 theme for minium-theme is available for use
+2023-03-09 16:06:10.436 INFO  [com.liferay.portal.osgi.web.wab.extender.internal.WabFactory-BundleTrackerOpener][ThemeHotDeployListener:108] 1 theme for speedwell-theme is available for use
+2023-03-09 16:06:10.676 INFO  [com.liferay.portal.osgi.web.wab.extender.internal.WabFactory-BundleTrackerOpener][ThemeHotDeployListener:108] 1 theme for dialect-theme is available for use
+2023-03-09 16:06:10.908 INFO  [com.liferay.portal.osgi.web.wab.extender.internal.WabFactory-BundleTrackerOpener][ThemeHotDeployListener:108] 1 theme for admin-theme is available for use
+2023-03-09 16:42:58.552 INFO  [pipe-start 1575][BundleStartStopLogger:77] STARTED de.ancud.app_1.0.0 [1575]
+2023-03-09 20:08:50.883 WARN  [HikariPool-2 housekeeper][HikariPool:788] HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=3h29s536ms417µs300ns).
