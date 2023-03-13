@@ -8,7 +8,6 @@ import javax.portlet.ProcessAction;
 import org.osgi.service.component.annotations.Component;
 
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-import com.liferay.portal.kernel.util.ParamUtil;
 
 import de.ancud.app.constants.CodingChallengePortletKeys;
 
@@ -32,18 +31,13 @@ import de.ancud.app.constants.CodingChallengePortletKeys;
 )
 public class CodingChallengePortlet extends MVCPortlet {
 	
-	//view form method
-	@ProcessAction(name="formSubmit")
-	public void formSubmit(ActionResponse response, ActionRequest request) {
+	
+	public void addToDo(ActionRequest actionRequest, ActionResponse actionResponse) {
 		System.out.println("\ntest call: employeeSubmit()");
-//		String name = ParamUtil.getString(request, "name");
-//		String mobile = ParamUtil.getString(request, "dueday");
-//		System.out.println(name);
 	}
 	
 	public void doSomething(
 		ActionRequest actionRequest, ActionResponse actionResponse) {
-
 		System.out.println("gold");
 	}
 }

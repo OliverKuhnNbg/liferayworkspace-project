@@ -1,10 +1,13 @@
-<%@ include file="/init.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<p style="display:none">
-	<b><liferay-ui:message key="codingchallenge.caption"/></b>
-</p>
+<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
 
-<portlet:actionURL name="formSubmit" var="formSubmit" />
+<%@ taglib uri="http://liferay.com/tld/aui" prefix="aui" %><%@
+taglib uri="http://liferay.com/tld/portlet" prefix="liferay-portlet" %><%@
+taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %><%@
+taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
+
+<portlet:actionURL name="addToDo" var="addToDoActionUrl" />
 <portlet:actionURL name="doSomething" var="actionURL" />
 
 <div class="container-fluid">
@@ -14,7 +17,7 @@
 		</div>
 	</div>
 	<div class="mt-4">
-			<form action="<%= formSubmit %>" method="post">
+			<form action="<%= addToDoActionUrl %>" name="formSubmit" method="POST">
 				<div class="form-group">
 				    <label for="exampleInputName">Name</label>
 				    <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" placeholder="Enter Name" name="name">
@@ -25,10 +28,9 @@
 				    <input type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter E-Mail" name="dueday">
 				</div>
 				
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<input type="submit" class="btn btn-primary" value="submit"/>
 			</form>
 	</div>
-	
 	<div class="mt-5 row">
 		<a href="<%= actionURL %>">Do Something</a>
 	</div>
