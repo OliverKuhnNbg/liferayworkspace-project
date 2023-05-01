@@ -7,16 +7,16 @@
     <entity name="Task" local-service="true">
         <column name="taskId" primary="true" type="long"></column>
         <column name="userId" type="long"></column>
-        <column name="task" type="String"></column>
+        <column name="toDoTask" type="String"></column>
         <column name="dueDate" type="Date"></column>
         <column name="done" type="boolean"></column>
         
         <finder name="allTasks" return-type="Collection">
-			<finder-column name="task" />
+			<finder-column name="toDoTask" />
 		</finder>
 		<finder name="userTasks" return-type="Collection">
 		   	<finder-column name="userId" />
-			<finder-column name="task" />
+			<finder-column name="toDoTask" />
 		</finder>
 		<finder name="userTasksDone" return-type="Collection">
 		   	<finder-column name="userId" />
