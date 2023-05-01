@@ -1,0 +1,11 @@
+dependencies {
+	compile project(":modules:coding-challenge-service:coding-challenge-service-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+}
+
+buildService {
+	apiDir = "../coding-challenge-service-api/src/main/java"
+}
+
+group = "de.ancud.app.service"
