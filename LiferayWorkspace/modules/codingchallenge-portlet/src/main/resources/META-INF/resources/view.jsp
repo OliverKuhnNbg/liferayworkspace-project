@@ -36,7 +36,9 @@
 				    </div>
 				  </div>
 				  <div class="form-group row">
-				  	<button type="submit" class="btn btn-primary">Add Task</button>
+				  	<div class="col-sm-12 col-form-label">
+				  		<button type="submit" class="btn btn-primary">Add Task</button>
+				  	</div>
 				  </div>
 			  </form>
 			</div>
