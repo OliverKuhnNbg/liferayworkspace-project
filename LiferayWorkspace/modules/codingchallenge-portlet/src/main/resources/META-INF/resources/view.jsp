@@ -6,6 +6,8 @@
 	<b><liferay-ui:message key="codingchallenge.caption"/></b>
 </p>
  -->
+ <portlet:actionURL name="addEntry" var="addEntryURL" />
+ 
 <div class="codingchallenge-portlet">
 	<div class="row mb-4">
 		<div class="col-12">
@@ -16,6 +18,7 @@
 	
 	<div class="row"> 
 		<div class="col-12">
+
 			<div class="card">
 			  <div class="card-header">
 			    Hier können Sie eine neue Aufgabe Ihrer ToDo-Liste hinzufügen
@@ -25,16 +28,17 @@
 			    <h5 class="card-title">Special title treatment</h5>
 			    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 			    -->
-			    <form>
+			    <form action="<%= addEntryURL %>" method="post">
 				  <div class="form-group row">
 				    <label for="inputPassword" class="col-sm-2 col-form-label">Neue Aufgabe</label>
 				    <div class="col-sm-10">
 				      <input type="text" class="form-control" id="inputPassword" placeholder="Neue Aufgabe">
 				    </div>
 				  </div>
-				</form>
-			    <a href="#" class="btn btn-primary">Add Task</a>
-			  </div>
+				  <div class="form-group row">
+				  	<button type="submit" class="btn btn-primary">Add Task</button>
+				  </div>
+			  </form>
 			</div>
 		</div>
 	</div>

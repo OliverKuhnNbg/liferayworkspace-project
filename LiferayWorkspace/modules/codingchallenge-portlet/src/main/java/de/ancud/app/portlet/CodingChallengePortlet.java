@@ -1,12 +1,14 @@
 package de.ancud.app.portlet;
 
-import de.ancud.app.constants.CodingChallengePortletKeys;
-
-import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
-
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
 
 import org.osgi.service.component.annotations.Component;
+
+import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+
+import de.ancud.app.constants.CodingChallengePortletKeys;
 
 /**
  * @author Oliver
@@ -27,4 +29,8 @@ import org.osgi.service.component.annotations.Component;
 	service = Portlet.class
 )
 public class CodingChallengePortlet extends MVCPortlet {
+	
+	public void addEntry(ActionRequest request, ActionResponse response) {
+		System.out.println("test");
+	}
 }
