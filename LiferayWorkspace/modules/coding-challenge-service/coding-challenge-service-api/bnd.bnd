@@ -1,0 +1,10 @@
+Bundle-Name: coding-challenge-service-api
+Bundle-SymbolicName: de.ancud.app.service.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	de.ancud.app.service.exception,\
+	de.ancud.app.service.model,\
+	de.ancud.app.service.service,\
+	de.ancud.app.service.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../coding-challenge-service-service/service.xml
