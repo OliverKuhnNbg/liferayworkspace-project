@@ -1,17 +1,11 @@
 <%@ include file="/init.jsp" %>
 
-<!-- 
-<h1>It is alive!!!</h1>
-<p>
-	<b><liferay-ui:message key="codingchallenge.caption"/></b>
-</p>
- -->
- <portlet:actionURL name="addEntry" var="addEntryURL" />
+<portlet:actionURL name="addEntry" var="addEntryURL" />
  
 <div class="codingchallenge-portlet">
 	<div class="row mb-4">
 		<div class="col-12">
-			<h1> Ihre ToDo`s</h1>
+			<h1>Ihre ToDo`s  Tests</h1>
 			<b>Für das Anlegen eines neuen Eintrages, verwenden Sie bitte das folgende Eingabeformular</b>
 		</div>
 	</div>
@@ -30,11 +24,12 @@
 			    -->
 			    <form action="<%= addEntryURL %>" method="post">
 				  <div class="form-group row">
-				    <label for="inputPassword" class="col-sm-2 col-form-label">Neue Aufgabe</label>
+				    <label for="inputTask" class="col-sm-2 col-form-label">Neue Aufgabe</label>
 				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="inputPassword" placeholder="Neue Aufgabe">
+				      <input type="text" name="<portlet:namespace />task" class="form-control" id="inputTask" placeholder="Neue Aufgabe">
 				    </div>
 				  </div>
+				  
 				  <div class="form-group row">
 				  	<div class="col-sm-12 col-form-label">
 				  		<button type="submit" class="btn btn-primary">Add Task</button>

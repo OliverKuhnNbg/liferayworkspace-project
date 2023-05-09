@@ -7,6 +7,9 @@ import javax.portlet.Portlet;
 import org.osgi.service.component.annotations.Component;
 
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.theme.ThemeDisplay;
+import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.WebKeys;
 
 import de.ancud.app.constants.CodingChallengePortletKeys;
 
@@ -31,6 +34,15 @@ import de.ancud.app.constants.CodingChallengePortletKeys;
 public class CodingChallengePortlet extends MVCPortlet {
 	
 	public void addEntry(ActionRequest request, ActionResponse response) {
-		System.out.println("test");
+		
+		ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
+		long userId = themeDisplay.getUserId();
+		
+		String taskEntry = ParamUtil.getString(request, "task");
+		System.out.println("Best");
+		System.out.println(userId);
+		System.out.println(taskEntry);
+		System.out.println(false);
+		
 	}
 }
