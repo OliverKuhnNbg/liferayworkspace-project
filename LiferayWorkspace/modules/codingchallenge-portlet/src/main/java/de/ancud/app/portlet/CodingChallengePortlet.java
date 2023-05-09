@@ -1,5 +1,8 @@
 package de.ancud.app.portlet;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
@@ -39,10 +42,33 @@ public class CodingChallengePortlet extends MVCPortlet {
 		long userId = themeDisplay.getUserId();
 		
 		String taskEntry = ParamUtil.getString(request, "task");
-		System.out.println("Best");
-		System.out.println(userId);
-		System.out.println(taskEntry);
-		System.out.println(false);
+		String dateStr = ParamUtil.getString(request, "duedate");
 		
+		/* checks empty inputs */
+		if(!taskEntry.equals("") && !dateStr.equals("")) {
+			LocalDate date = convertDateStrToDate(dateStr);
+			System.out.println("\nBest");
+			System.out.println(userId);
+			System.out.println(taskEntry);
+			System.out.println(date);
+			System.out.println(false);
+			
+//			Task task = TaskLocalServiceUtil.createTask(CounterLocalServiceUtil.increment());
+//			task.setToDoTask(taskEntry);
+//			task.setDone(false);
+//			
+//			System.out.println("********\nTasKOBJ:\n\n" +task.getTaskId());
+//			System.out.println(task.getTaskId());
+//			TaskLocalServiceUtil.addTask(null)
+		}
+		
+	}
+	
+	private LocalDate convertDateStrToDate(String date) {
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yy");
+		LocalDate localDate = LocalDate.parse(date, formatter);
+		
+		return localDate;
 	}
 }
