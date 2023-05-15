@@ -5,7 +5,7 @@
 <div class="codingchallenge-portlet">
 	<div class="row mb-4">
 		<div class="col-12">
-			<h1>Ihre ToDo`s  Tests</h1>
+			<h1>Ihre ToDo`s  Test </h1>
 			<b>Für das Anlegen eines neuen Eintrages, verwenden Sie bitte das folgende Eingabeformular</b>
 		</div>
 	</div>

@@ -8,13 +8,19 @@ import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
+import com.liferay.counter.kernel.service.CounterLocalService;
+import com.liferay.counter.kernel.service.CounterLocalService;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
 
 import de.ancud.app.constants.CodingChallengePortletKeys;
+import de.ancud.app.service.model.Task;
+import de.ancud.app.service.service.TaskLocalService;
+
 
 /**
  * @author Oliver
@@ -36,6 +42,12 @@ import de.ancud.app.constants.CodingChallengePortletKeys;
 )
 public class CodingChallengePortlet extends MVCPortlet {
 	
+	@Reference
+	private TaskLocalService taskLocalService;
+
+	@Reference
+	private CounterLocalService counterLocalService;
+	
 	public void addEntry(ActionRequest request, ActionResponse response) {
 		
 		ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
@@ -44,22 +56,22 @@ public class CodingChallengePortlet extends MVCPortlet {
 		String taskEntry = ParamUtil.getString(request, "task");
 		String dateStr = ParamUtil.getString(request, "duedate");
 		
-		/* checks empty inputs */
 		if(!taskEntry.equals("") && !dateStr.equals("")) {
 			LocalDate date = convertDateStrToDate(dateStr);
-			System.out.println("\nBest");
+			System.out.println("\nBest!!!");
 			System.out.println(userId);
 			System.out.println(taskEntry);
 			System.out.println(date);
 			System.out.println(false);
+			System.out.println("hjgasdgf");
 			
-//			Task task = TaskLocalServiceUtil.createTask(CounterLocalServiceUtil.increment());
-//			task.setToDoTask(taskEntry);
-//			task.setDone(false);
-//			
-//			System.out.println("********\nTasKOBJ:\n\n" +task.getTaskId());
-//			System.out.println(task.getTaskId());
-//			TaskLocalServiceUtil.addTask(null)
+			Task task = taskLocalService.createTask(counterLocalService.increment());
+			task.setToDoTask(taskEntry);
+			task.setDone(false);
+			
+			System.out.println("********\nTasKOBJ:\n\n" + task.getTaskId());
+			System.out.println(task.getTaskId());
+			taskLocalService.addTask(task);
 		}
 		
 	}
