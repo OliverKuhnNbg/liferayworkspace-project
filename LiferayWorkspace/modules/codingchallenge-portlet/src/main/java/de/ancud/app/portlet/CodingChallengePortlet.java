@@ -1,18 +1,28 @@
 package de.ancud.app.portlet;
 
+import java.io.IOException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
+import javax.portlet.PortletException;
+import javax.portlet.RenderRequest;
+import javax.portlet.RenderResponse;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 import com.liferay.counter.kernel.service.CounterLocalService;
-import com.liferay.counter.kernel.service.CounterLocalService;
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.service.ServiceContextFactory;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
@@ -20,6 +30,7 @@ import com.liferay.portal.kernel.util.WebKeys;
 import de.ancud.app.constants.CodingChallengePortletKeys;
 import de.ancud.app.service.model.Task;
 import de.ancud.app.service.service.TaskLocalService;
+import de.ancud.app.service.service.TaskLocalServiceUtil;
 
 
 /**
@@ -57,30 +68,59 @@ public class CodingChallengePortlet extends MVCPortlet {
 		String dateStr = ParamUtil.getString(request, "duedate");
 		
 		if(!taskEntry.equals("") && !dateStr.equals("")) {
-			LocalDate date = convertDateStrToDate(dateStr);
-			System.out.println("\nBest!!!");
-			System.out.println(userId);
-			System.out.println(taskEntry);
-			System.out.println(date);
-			System.out.println(false);
-			System.out.println("hjgasdgf");
+			Date date = convertDateStrToDate(dateStr);
 			
 			Task task = taskLocalService.createTask(counterLocalService.increment());
+			task.setUserId(userId);
 			task.setToDoTask(taskEntry);
+			task.setDueDate(date);
 			task.setDone(false);
 			
-			System.out.println("********\nTasKOBJ:\n\n" + task.getTaskId());
-			System.out.println(task.getTaskId());
 			taskLocalService.addTask(task);
 		}
-		
 	}
 	
-	private LocalDate convertDateStrToDate(String date) {
-		
+	private Date convertDateStrToDate(String dateString) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yy");
-		LocalDate localDate = LocalDate.parse(date, formatter);
+		LocalDate localDate = LocalDate.parse(dateString, formatter);
 		
-		return localDate;
+		ZoneId defaultZoneId = ZoneId.systemDefault();
+		Date date = Date.from(localDate.atStartOfDay(defaultZoneId).toInstant());
+		
+		return date;
+	}
+	
+	@Override
+	public void render(RenderRequest renderRequest, RenderResponse renderResponse)
+	    throws IOException, PortletException {
+		System.out.println("test render method");
+		List<Task> allTaskEntrys = new ArrayList<>();
+		
+		try {
+			ServiceContext serviceContext = ServiceContextFactory.getInstance(Task.class.getName(), renderRequest);
+			int taskEntysCount = taskLocalService.getTasksCount();
+			
+			/* userId */
+			ThemeDisplay themeDisplay = (ThemeDisplay) renderRequest.getAttribute(WebKeys.THEME_DISPLAY);
+			long userId = themeDisplay.getUserId();
+			
+			/* TODO try to get entrys over finders I guess finders are located in the Utils */
+			/* all entrys */
+			allTaskEntrys = TaskLocalServiceUtil.getTasks(0, taskEntysCount);
+			System.out.println(allTaskEntrys.size());
+			/* filter list */
+			for (Task task:allTaskEntrys) {
+				System.out.println(task.getToDoTask());
+				if (task.getUserId() != userId) {
+					allTaskEntrys.remove(task);
+				}
+			}
+			
+		} catch (PortalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		super.render(renderRequest, renderResponse);
 	}
 }
