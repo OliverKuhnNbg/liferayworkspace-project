@@ -14,10 +14,6 @@
 			    Hier können Sie eine neue Aufgabe Ihrer ToDo-Liste hinzufügen
 			  </div>
 			  <div class="card-body">
-			  	<!--  
-			    <h5 class="card-title">Special title treatment</h5>
-			    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-			    -->
 			    <form action="<%= addEntryURL %>" method="post">
 				  <div class="form-group row">
 				    <label for="inputTask" class="col-sm-2 col-form-label">Neue Aufgabe</label>
