@@ -116,6 +116,9 @@ public class CodingChallengePortlet extends MVCPortlet {
 				}
 			}
 			
+			/*map entries to request*/
+			renderRequest.setAttribute("tasks", allTaskEntrys);
+			
 		} catch (PortalException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

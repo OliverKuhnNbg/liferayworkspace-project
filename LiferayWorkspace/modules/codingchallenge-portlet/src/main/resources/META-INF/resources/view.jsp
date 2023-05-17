@@ -1,19 +1,15 @@
 <%@ include file="/init.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 
 <portlet:actionURL name="addEntry" var="addEntryURL" />
  
 <div class="codingchallenge-portlet">
-	<div class="row mb-4">
-		<div class="col-12">
-			<h1>Ihre ToDo`s  Test </h1>
-			<b>Für das Anlegen eines neuen Eintrages, verwenden Sie bitte das folgende Eingabeformular</b>
-		</div>
-	</div>
-	
-	<div class="row"> 
-		<div class="col-12">
-
-			<div class="card">
+	<div class="row">
+		<div class="col-6 border-right">
+			<h1 class="row ml-1">Ihre ToDo`s</h1>
+			<p class="row ml-1">Für das Anlegen eines neuen Eintrages, verwenden Sie bitte das folgende Eingabeformular.</p>
+			<div class="card mt-3">
 			  <div class="card-header">
 			    Hier können Sie eine neue Aufgabe Ihrer ToDo-Liste hinzufügen
 			  </div>
@@ -46,4 +42,31 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="col-6">
+		<p>${requestScope.tasks.size()}</p>
+		
+		<table class="table">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Task</th>
+		      <th scope="col">Fälligkeitsdatum</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <c:forEach items="${requestScope.tasks}" var="task"> 
+			    <tr>
+			        <td><c:out value="${task.taskId}"/></td>
+			        <td><c:out value="${task.toDoTask}"/></td>
+			        <td><c:out value="${task.dueDate}"/></td>
+			    </tr>
+			</c:forEach>
+			
+		  </tbody>
+		</table>
+		
+				
+	</div>
+	
 </div>
