@@ -1,0 +1,5 @@
+Bundle-Name: angular-liferay-portlet
+Bundle-SymbolicName: de.ancud.app.angular
+Bundle-Version: 1.0.0
+Export-Package: de.ancud.app.angular.constants
+Web-ContextPath: /angular-liferay-portlet
