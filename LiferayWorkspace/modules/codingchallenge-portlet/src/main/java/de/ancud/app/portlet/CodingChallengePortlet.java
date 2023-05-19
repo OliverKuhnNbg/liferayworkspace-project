@@ -31,6 +31,7 @@ import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
 
 import de.ancud.app.constants.CodingChallengePortletKeys;
+import de.ancud.app.portlet.helpers.DateConverter;
 import de.ancud.app.service.model.Task;
 import de.ancud.app.service.service.TaskLocalService;
 import de.ancud.app.service.service.TaskLocalServiceUtil;
@@ -56,6 +57,8 @@ import de.ancud.app.service.service.TaskLocalServiceUtil;
 )
 public class CodingChallengePortlet extends MVCPortlet {
 	
+	private DateConverter dateConverter = new DateConverter();
+	
 	@Reference
 	private TaskLocalService taskLocalService;
 
@@ -65,7 +68,6 @@ public class CodingChallengePortlet extends MVCPortlet {
 	@Override
 	public void render(RenderRequest renderRequest, RenderResponse renderResponse)
 	    throws IOException, PortletException {
-		System.out.println("test render method");
 		List<Task> allTaskEntrys = new ArrayList<>();
 
 		try {
@@ -87,7 +89,7 @@ public class CodingChallengePortlet extends MVCPortlet {
 			}
 			
 			/*map entries to request*/
-			List<String> allDatesConverted = getDateAsStringList(allTaskEntrys);
+			List<String> allDatesConverted = dateConverter.getDateAsStringList(allTaskEntrys);
 			renderRequest.setAttribute("tasks", allTaskEntrys);
 			renderRequest.setAttribute("convertedDateList", allDatesConverted);
 		} catch (PortalException e) {
@@ -107,7 +109,7 @@ public class CodingChallengePortlet extends MVCPortlet {
 		String dateStr = ParamUtil.getString(request, "duedate");
 		
 		if(!taskEntry.equals("") && !dateStr.equals("")) {
-			Date date = convertDateStrToDate(dateStr);
+			Date date = dateConverter.convertDateStrToDate(dateStr);
 			
 			Task task = taskLocalService.createTask(counterLocalService.increment());
 			task.setUserId(userId);
@@ -117,31 +119,5 @@ public class CodingChallengePortlet extends MVCPortlet {
 			
 			taskLocalService.addTask(task);
 		}
-	}
-	
-	private List<String> getDateAsStringList(List<Task> tasks) {
-		List<String> dateStringyfiedList = new ArrayList<>();
-		for (Task task : tasks) {
-			String dateStr = convertDateToDateString(task.getDueDate());
-			dateStringyfiedList.add(dateStr);
-		}
-		return dateStringyfiedList;
-	}
-	
-	private Date convertDateStrToDate(String dateString) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yy");
-		LocalDate localDate = LocalDate.parse(dateString, formatter);
-		
-		ZoneId defaultZoneId = ZoneId.systemDefault();
-		Date date = Date.from(localDate.atStartOfDay(defaultZoneId).toInstant());
-		
-		return date;
-	}
-	
-	private String convertDateToDateString(Date d) {  
-        DateFormat dateFormat = new SimpleDateFormat("dd. MMMM yyyy");
-        String strDate = dateFormat.format(d); 
-        
-		return strDate;
 	}
 }
