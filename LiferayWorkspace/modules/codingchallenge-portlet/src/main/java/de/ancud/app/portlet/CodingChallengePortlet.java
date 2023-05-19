@@ -87,7 +87,7 @@ public class CodingChallengePortlet extends MVCPortlet {
 			}
 			
 			/*map entries to request*/
-			List<String> allDatesConverted = getDateStringList(allTaskEntrys);
+			List<String> allDatesConverted = getDateAsStringList(allTaskEntrys);
 			renderRequest.setAttribute("tasks", allTaskEntrys);
 			renderRequest.setAttribute("convertedDateList", allDatesConverted);
 		} catch (PortalException e) {
@@ -119,7 +119,7 @@ public class CodingChallengePortlet extends MVCPortlet {
 		}
 	}
 	
-	private List<String> getDateStringList(List<Task> tasks) {
+	private List<String> getDateAsStringList(List<Task> tasks) {
 		List<String> dateStringyfiedList = new ArrayList<>();
 		for (Task task : tasks) {
 			String dateStr = convertDateToDateString(task.getDueDate());
