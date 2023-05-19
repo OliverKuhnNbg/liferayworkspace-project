@@ -1,0 +1,1 @@
+npm run deploy (run within angular app folder)

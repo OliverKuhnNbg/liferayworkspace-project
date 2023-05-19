@@ -2,6 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 
+<%@ page import="java.lang.*;"%>
+<%@ page import="java.util.*;"%>
+
 <portlet:actionURL name="addEntry" var="addEntryURL" />
  
 <div class="codingchallenge-portlet">
@@ -51,11 +54,16 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <c:forEach items="${requestScope.tasks}" var="task"> 
+		    <c:forEach items="${requestScope.tasks}" var="task" varStatus="status"> 
+		    	<!--scriptlet tag -->
+				<%
+					//out is implicit object of JSP
+					String name = "test front end scriptlet";
+				%>
 			    <tr>
 			        <td><c:out value="${task.taskId}"/></td>
 			        <td><c:out value="${task.toDoTask}"/></td>
-			        <td><c:out value="${task.dueDate}"/></td>
+			        <td><c:out value="${requestScope.convertedDateList[status.index]}"/></td>
 			    </tr>
 			</c:forEach>
 			

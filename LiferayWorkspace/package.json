@@ -2,7 +2,8 @@
     "private": true,
     "workspaces": {
         "packages": [
-            "modules\\angular-liferay-portlet"
+            "modules\\angular-liferay-portlet",
+            "modules\\angular-liferay-test-two-portlet\\my-first-angular-liferay-portlet"
         ]
     }
 }

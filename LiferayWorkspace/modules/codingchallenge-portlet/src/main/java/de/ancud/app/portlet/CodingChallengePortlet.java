@@ -1,10 +1,13 @@
 package de.ancud.app.portlet;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -59,6 +62,42 @@ public class CodingChallengePortlet extends MVCPortlet {
 	@Reference
 	private CounterLocalService counterLocalService;
 	
+	@Override
+	public void render(RenderRequest renderRequest, RenderResponse renderResponse)
+	    throws IOException, PortletException {
+		System.out.println("test render method");
+		List<Task> allTaskEntrys = new ArrayList<>();
+
+		try {
+			ServiceContext serviceContext = ServiceContextFactory.getInstance(Task.class.getName(), renderRequest);
+			int taskEntysCount = taskLocalService.getTasksCount();
+			
+			/* userId */
+			ThemeDisplay themeDisplay = (ThemeDisplay) renderRequest.getAttribute(WebKeys.THEME_DISPLAY);
+			long userId = themeDisplay.getUserId();
+			
+			/* TODO try to get entrys over finders I guess finders are located in the Utils */
+			/* all entrys */
+			allTaskEntrys = TaskLocalServiceUtil.getTasks(0, taskEntysCount);
+			/* filter list */
+			for (Task task:allTaskEntrys) {
+				if (task.getUserId() != userId) {
+					allTaskEntrys.remove(task);
+				}
+			}
+			
+			/*map entries to request*/
+			List<String> allDatesConverted = getDateStringList(allTaskEntrys);
+			renderRequest.setAttribute("tasks", allTaskEntrys);
+			renderRequest.setAttribute("convertedDateList", allDatesConverted);
+		} catch (PortalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		super.render(renderRequest, renderResponse);
+	}
+	
 	public void addEntry(ActionRequest request, ActionResponse response) {
 		
 		ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
@@ -80,6 +119,15 @@ public class CodingChallengePortlet extends MVCPortlet {
 		}
 	}
 	
+	private List<String> getDateStringList(List<Task> tasks) {
+		List<String> dateStringyfiedList = new ArrayList<>();
+		for (Task task : tasks) {
+			String dateStr = convertDateToDateString(task.getDueDate());
+			dateStringyfiedList.add(dateStr);
+		}
+		return dateStringyfiedList;
+	}
+	
 	private Date convertDateStrToDate(String dateString) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yy");
 		LocalDate localDate = LocalDate.parse(dateString, formatter);
@@ -90,40 +138,10 @@ public class CodingChallengePortlet extends MVCPortlet {
 		return date;
 	}
 	
-	@Override
-	public void render(RenderRequest renderRequest, RenderResponse renderResponse)
-	    throws IOException, PortletException {
-		System.out.println("test render method");
-		List<Task> allTaskEntrys = new ArrayList<>();
-		
-		try {
-			ServiceContext serviceContext = ServiceContextFactory.getInstance(Task.class.getName(), renderRequest);
-			int taskEntysCount = taskLocalService.getTasksCount();
-			
-			/* userId */
-			ThemeDisplay themeDisplay = (ThemeDisplay) renderRequest.getAttribute(WebKeys.THEME_DISPLAY);
-			long userId = themeDisplay.getUserId();
-			
-			/* TODO try to get entrys over finders I guess finders are located in the Utils */
-			/* all entrys */
-			allTaskEntrys = TaskLocalServiceUtil.getTasks(0, taskEntysCount);
-			System.out.println(allTaskEntrys.size());
-			/* filter list */
-			for (Task task:allTaskEntrys) {
-				System.out.println(task.getToDoTask());
-				if (task.getUserId() != userId) {
-					allTaskEntrys.remove(task);
-				}
-			}
-			
-			/*map entries to request*/
-			renderRequest.setAttribute("tasks", allTaskEntrys);
-			
-		} catch (PortalException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		super.render(renderRequest, renderResponse);
+	private String convertDateToDateString(Date d) {  
+        DateFormat dateFormat = new SimpleDateFormat("dd. MMMM yyyy");
+        String strDate = dateFormat.format(d); 
+        
+		return strDate;
 	}
 }

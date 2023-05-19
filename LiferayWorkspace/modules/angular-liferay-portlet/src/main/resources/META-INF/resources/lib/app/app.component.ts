@@ -8,7 +8,7 @@ export class Hero {
 @Component({
 	template: `
 	<div class="angular-portlet">
-		<h1>{{title}} test</h1>
+		<h1>{{title}} test new 5</h1>
 		<h2>{{hero.name}} details!</h2>
 		<div><label>id: </label>{{hero.id}}</div>
 		<div>
@@ -19,6 +19,8 @@ export class Hero {
 	`
 })
 export class AppComponent {
+	public sessionStorage = sessionStorage;
+	
 	hero: Hero = {
 		id: 1,
 		name: 'Windstorm'
