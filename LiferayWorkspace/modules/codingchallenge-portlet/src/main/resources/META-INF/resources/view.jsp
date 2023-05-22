@@ -16,19 +16,21 @@
 			  <div class="card-header">
 			    Hier können Sie eine neue Aufgabe Ihrer ToDo-Liste hinzufügen
 			  </div>
+
 			  <div class="card-body">
 			    <form action="<%= addEntryURL %>" method="post">
+
 				  <div class="form-group row">
-				    <label for="inputTask" class="col-sm-2 col-form-label">Neue Aufgabe</label>
-				    <div class="col-sm-10">
-				      <input type="text" name="<portlet:namespace />task" class="form-control" id="inputTask" placeholder="Neue Aufgabe">
+				    <label for="inputTask" class="col-10 col-form-label">Neue Aufgabe *</label>
+				    <div class="col-10">
+				      <input type="text" name="<portlet:namespace />task" class="form-control" id="inputTask" placeholder="Neue Aufgabe" required="true">
 				    </div>
 				  </div>
 				  
 				  <div class="form-group row">
-				    <label for="inputDate" class="col-sm-2 col-form-label">Fälligkeitsdatum</label>
-				    <div class="col-sm-10">
-				      <input type="text" name="<portlet:namespace />duedate" class="form-control" id="inputDate" placeholder="Fälligkeitsdatum">
+				    <label for="inputDate" class="col-10 col-form-label">Fälligkeitsdatum (tt.mm.yy) *</label>
+				    <div class="col-10">
+				      <input type="text" name="<portlet:namespace />duedate" class="form-control" id="inputDate" placeholder="Fälligkeitsdatum" required="true">
 				    </div>
 				  </div>
 				  

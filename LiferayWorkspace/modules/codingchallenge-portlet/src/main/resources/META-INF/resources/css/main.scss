@@ -4,4 +4,14 @@
 	.border-right {
 		border-right: .0625rem solid #dfdfdf !important;
 	}
+
+	form :invalid.form-control:focus {
+	    border-color: #ff8086 !important;
+		box-shadow: 0 0 0 0.125rem #fff , 0 0 0 0.25rem #ff8080 !important;
+	}
+
+	form :valid.form-control:focus {
+		border-color: #2da84c !important;
+		box-shadow: 0 0 0 0.125rem #fff, 0 0 0 0.25rem #25a821 !important;
+	}
 }
