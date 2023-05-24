@@ -138,7 +138,6 @@ public class CodingChallengePortlet extends MVCPortlet {
 	}
 	
 	private List<Task> filterAllTasksByUserId(List<Task> allTasks) {
-		/* filter list */
 		for (Task task:allTasks) {
 			if (task.getUserId() != userId) {
 				allTasks.remove(task);
