@@ -6,7 +6,8 @@
 <%@ page import="java.util.*;"%>
 
 <portlet:actionURL name="addEntry" var="addEntryURL" />
- 
+<portlet:actionURL name="markDone" var="markDoneURL" />
+
 <div class="codingchallenge-portlet">
 	<div class="row">
 		<div class="col-6 border-right">
@@ -16,7 +17,6 @@
 			  <div class="card-header">
 			    Hier können Sie eine neue Aufgabe Ihrer ToDo-Liste hinzufügen
 			  </div>
-
 			  <div class="card-body">
 			    <form action="<%= addEntryURL %>" method="post">
 
@@ -46,32 +46,40 @@
 
 	<div class="col-6">
 		<p>${requestScope.tasks.size()}</p>
-		
-		<table class="table">
-		  <thead class="thead-dark">
-		    <tr>
-		      <th scope="col">#</th>
-		      <th scope="col">Task</th>
-		      <th scope="col">Fälligkeitsdatum</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <c:forEach items="${requestScope.tasks}" var="task" varStatus="status"> 
-		    	<!--scriptlet tag -->
-				<%
-					//out is implicit object of JSP
-					String name = "test front end scriptlet";
-				%>
+
+		<form action="<%= markDoneURL %>" method="post">
+			<table class="table">
+			  <thead class="thead-dark">
 			    <tr>
-			        <td><c:out value="${task.taskId}"/></td>
-			        <td><c:out value="${task.toDoTask}"/></td>
-			        <td><c:out value="${requestScope.convertedDateList[status.index]}"/></td>
+			      <th scope="col">#</th>
+			      <th scope="col">Task</th>
+			      <th scope="col">Fälligkeitsdatum</th>
+			      <th scope="col">Erledigt</th>
 			    </tr>
-			</c:forEach>
-			
-		  </tbody>
-		</table>
-		
+			  </thead>
+			  <tbody>
+				    <c:forEach items="${requestScope.tasks}" var="task" varStatus="status"> 
+				    	<!--scriptlet tag -->
+						<%
+							String name = "test front end scriptlet";
+						%>
+					    <tr>
+					        <td><c:out value="${task.taskId}"/></td>
+					        <td><c:out value="${task.toDoTask}"/></td>
+					        <td><c:out value="${requestScope.convertedDateList[status.index]}"/></td>
+					        <td class="text-center">
+							  <input type="checkbox" name="<portlet:namespace />taskCheckBox_${task.taskId}" <c:if test="${task.done}">checked</c:if> />
+							</td>
+					    </tr>
+					</c:forEach>
+					<tr>
+						<td>
+							<button type="submit" class="btn btn-primary mt-4">Aktualisieren</button>
+						</td>
+					</tr>
+			  </tbody>
+			</table>
+		</form>
 				
 	</div>
 	

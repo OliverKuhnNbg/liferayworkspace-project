@@ -65,10 +65,13 @@ public class CodingChallengePortlet extends MVCPortlet {
 	@Reference
 	private CounterLocalService counterLocalService;
 	
+	private List<Task> allTaskEntrys = new ArrayList<>();
+	private long userId = 0;
+	
 	@Override
 	public void render(RenderRequest renderRequest, RenderResponse renderResponse)
 	    throws IOException, PortletException {
-		List<Task> allTaskEntrys = new ArrayList<>();
+		allTaskEntrys = new ArrayList<>();
 
 		try {
 			ServiceContext serviceContext = ServiceContextFactory.getInstance(Task.class.getName(), renderRequest);
@@ -76,17 +79,13 @@ public class CodingChallengePortlet extends MVCPortlet {
 			
 			/* userId */
 			ThemeDisplay themeDisplay = (ThemeDisplay) renderRequest.getAttribute(WebKeys.THEME_DISPLAY);
-			long userId = themeDisplay.getUserId();
+			userId = themeDisplay.getUserId();
 			
 			/* TODO try to get entrys over finders I guess finders are located in the Utils */
 			/* all entrys */
 			allTaskEntrys = TaskLocalServiceUtil.getTasks(0, taskEntysCount);
 			/* filter list */
-			for (Task task:allTaskEntrys) {
-				if (task.getUserId() != userId) {
-					allTaskEntrys.remove(task);
-				}
-			}
+			allTaskEntrys = filterAllTasksByUserId(allTaskEntrys);
 			
 			/*map entries to request*/
 			List<String> allDatesConverted = dateConverter.getDateAsStringList(allTaskEntrys);
@@ -119,5 +118,36 @@ public class CodingChallengePortlet extends MVCPortlet {
 			
 			taskLocalService.addTask(task);
 		}
+	}
+	
+	public void markDone(ActionRequest request, ActionResponse response) {
+		String taskFormInput = "";
+		
+		for (int i = 0; i < allTaskEntrys.size(); i++) {
+			Task taskItem = allTaskEntrys.get(i);
+			long taskId = taskItem.getTaskId();
+			taskFormInput = ParamUtil.getString(request, "taskCheckBox_" + taskId);
+			System.out.println(taskFormInput);
+			
+			if(taskFormInput == "") {
+				taskItem.setDone(false);
+			} else {
+				taskItem.setDone(true);
+			}
+			taskLocalService.updateTask(taskItem);
+		}
+		
+		
+	}
+	
+	private List<Task> filterAllTasksByUserId(List<Task> allTasks) {
+		/* filter list */
+		for (Task task:allTasks) {
+			if (task.getUserId() != userId) {
+				allTasks.remove(task);
+			}
+		}
+		
+		return allTasks;
 	}
 }
