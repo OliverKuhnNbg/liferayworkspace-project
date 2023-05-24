@@ -1,40 +1,39 @@
 <%@ include file="/init.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 
-<!-- 
-<h1>It is alive!!!</h1>
-<p>
-	<b><liferay-ui:message key="codingchallenge.caption"/></b>
-</p>
- -->
- <portlet:actionURL name="addEntry" var="addEntryURL" />
- 
+<%@ page import="java.lang.*;"%>
+<%@ page import="java.util.*;"%>
+
+<portlet:actionURL name="addEntry" var="addEntryURL" />
+<portlet:actionURL name="markDone" var="markDoneURL" />
+
 <div class="codingchallenge-portlet">
-	<div class="row mb-4">
-		<div class="col-12">
-			<h1> Ihre ToDo`s</h1>
-			<b>Für das Anlegen eines neuen Eintrages, verwenden Sie bitte das folgende Eingabeformular</b>
-		</div>
-	</div>
-	
-	<div class="row"> 
-		<div class="col-12">
-
-			<div class="card">
+	<div class="row">
+		<div class="col-6 border-right">
+			<h1 class="row ml-1">Ihre ToDo`s</h1>
+			<p class="row ml-1">Für das Anlegen eines neuen Eintrages, verwenden Sie bitte das folgende Eingabeformular.</p>
+			<div class="card mt-3">
 			  <div class="card-header">
 			    Hier können Sie eine neue Aufgabe Ihrer ToDo-Liste hinzufügen
 			  </div>
 			  <div class="card-body">
-			  	<!--  
-			    <h5 class="card-title">Special title treatment</h5>
-			    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-			    -->
 			    <form action="<%= addEntryURL %>" method="post">
+
 				  <div class="form-group row">
-				    <label for="inputPassword" class="col-sm-2 col-form-label">Neue Aufgabe</label>
-				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="inputPassword" placeholder="Neue Aufgabe">
+				    <label for="inputTask" class="col-10 col-form-label">Neue Aufgabe *</label>
+				    <div class="col-10">
+				      <input type="text" name="<portlet:namespace />task" class="form-control" id="inputTask" placeholder="Neue Aufgabe" required="true">
 				    </div>
 				  </div>
+				  
+				  <div class="form-group row">
+				    <label for="inputDate" class="col-10 col-form-label">Fälligkeitsdatum (tt.mm.yy) *</label>
+				    <div class="col-10">
+				      <input type="text" name="<portlet:namespace />duedate" class="form-control" id="inputDate" placeholder="Fälligkeitsdatum" required="true">
+				    </div>
+				  </div>
+				  
 				  <div class="form-group row">
 				  	<div class="col-sm-12 col-form-label">
 				  		<button type="submit" class="btn btn-primary">Add Task</button>
@@ -44,4 +43,44 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="col-6">
+		<p>${requestScope.tasks.size()}</p>
+
+		<form action="<%= markDoneURL %>" method="post">
+			<table class="table">
+			  <thead class="thead-dark">
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">Task</th>
+			      <th scope="col">Fälligkeitsdatum</th>
+			      <th scope="col">Erledigt</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+				    <c:forEach items="${requestScope.tasks}" var="task" varStatus="status"> 
+				    	<!--scriptlet tag -->
+						<%
+							String name = "test front end scriptlet";
+						%>
+					    <tr>
+					        <td><c:out value="${task.taskId}"/></td>
+					        <td><c:out value="${task.toDoTask}"/></td>
+					        <td><c:out value="${requestScope.convertedDateList[status.index]}"/></td>
+					        <td class="text-center">
+							  <input type="checkbox" name="<portlet:namespace />taskCheckBox_${task.taskId}" <c:if test="${task.done}">checked</c:if> />
+							</td>
+					    </tr>
+					</c:forEach>
+					<tr>
+						<td>
+							<button type="submit" class="btn btn-primary mt-4">Aktualisieren</button>
+						</td>
+					</tr>
+			  </tbody>
+			</table>
+		</form>
+				
+	</div>
+	
 </div>

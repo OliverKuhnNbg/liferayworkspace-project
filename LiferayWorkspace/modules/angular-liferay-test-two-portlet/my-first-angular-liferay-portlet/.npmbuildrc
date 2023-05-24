@@ -1,0 +1,16 @@
+{
+	"liferayDir": "C:\\Users\\Oliver\\eclipse-workspace\\coding-challenge\\liferayworkspace-project\\liferay-ce-portal-7.4.3.52-ga52",
+	"webpack": {
+		"rules": [
+			{
+				"test": "src\\\\.*\\.ts$",
+				"use": "ts-loader"
+			}
+		],
+		"extensions": [
+			".ts",
+			".js"
+		],
+		"mainModule": "index.ts"
+	}
+}

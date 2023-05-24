@@ -1,4 +1,4 @@
-Bundle-Name: coding-challenge-service-api
+Bundle-Name: task-service-api
 Bundle-SymbolicName: de.ancud.app.service.api
 Bundle-Version: 1.0.0
 Export-Package:\
@@ -7,4 +7,4 @@ Export-Package:\
 	de.ancud.app.service.service,\
 	de.ancud.app.service.service.persistence
 -check: EXPORTS
--includeresource: META-INF/service.xml=../coding-challenge-service-service/service.xml
+-includeresource: META-INF/service.xml=../task-service-service/service.xml

@@ -1,8 +1,13 @@
 dependencies {
 	compileOnly group: "com.liferay.portal", name: "release.portal.api"
-
+	
 	cssBuilder group: "com.liferay", name: "com.liferay.css.builder", version: "3.1.0"
 	
 	compileOnly project(":modules:task-service:task-service-api")
 	compileOnly project(":modules:task-service:task-service-service")
+}
+
+node {
+	nodeVersion = "10.15.1"
+	npmVersion = "6.4.1"
 }
