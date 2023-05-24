@@ -127,7 +127,6 @@ public class CodingChallengePortlet extends MVCPortlet {
 			Task taskItem = allTaskEntrys.get(i);
 			long taskId = taskItem.getTaskId();
 			taskFormInput = ParamUtil.getString(request, "taskCheckBox_" + taskId);
-			System.out.println(taskFormInput);
 			
 			if(taskFormInput == "") {
 				taskItem.setDone(false);
@@ -136,8 +135,6 @@ public class CodingChallengePortlet extends MVCPortlet {
 			}
 			taskLocalService.updateTask(taskItem);
 		}
-		
-		
 	}
 	
 	private List<Task> filterAllTasksByUserId(List<Task> allTasks) {
